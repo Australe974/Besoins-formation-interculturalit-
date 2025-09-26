@@ -8,564 +8,491 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background-color: #f9fafb;
-            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
         }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        .header { 
-            background: white; 
-            padding: 30px; 
-            border-radius: 12px; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .header h1 { color: #1f2937; font-size: 28px; font-weight: 700; }
-        .header p { color: #6b7280; margin-top: 5px; }
-        .buttons { display: flex; gap: 10px; flex-wrap: wrap; }
-        .btn { 
-            padding: 12px 24px; 
-            border: none; 
-            border-radius: 8px; 
-            cursor: pointer; 
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s;
-        }
-        .btn-primary { background: #2563eb; color: white; }
-        .btn-primary:hover { background: #1d4ed8; }
-        .btn-success { background: #16a34a; color: white; }
-        .btn-success:hover { background: #15803d; }
         
-        .form-card { 
+        .container { 
+            max-width: 900px; 
+            margin: 0 auto; 
             background: white; 
-            padding: 40px; 
-            border-radius: 12px; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+            border-radius: 20px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+            overflow: hidden;
         }
+        
+        .header { 
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: white; 
+            padding: 40px 30px; 
+            text-align: center;
+        }
+        .header h1 { font-size: 32px; font-weight: 700; margin-bottom: 10px; }
+        .header p { font-size: 18px; opacity: 0.9; }
+        
+        .form-container { padding: 40px; }
+        
+        .section { 
+            margin-bottom: 50px; 
+            border: 2px solid #e5e7eb;
+            border-radius: 15px;
+            padding: 30px;
+            background: #f8fafc;
+        }
+        
         .section-title { 
             font-size: 24px; 
             font-weight: 600; 
             color: #1f2937; 
-            border-bottom: 2px solid #e5e7eb; 
-            padding-bottom: 10px; 
-            margin-bottom: 30px; 
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+        
         .form-group { margin-bottom: 25px; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; }
+        .form-row { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 20px; 
+            margin-bottom: 25px; 
+        }
         @media (max-width: 768px) { .form-row { grid-template-columns: 1fr; } }
         
         label { 
             display: block; 
-            font-weight: 500; 
+            font-weight: 600; 
             color: #374151; 
-            margin-bottom: 8px; 
+            margin-bottom: 8px;
+            font-size: 16px;
         }
         .required::after { content: " *"; color: #ef4444; }
         .label-hint { 
-            font-size: 12px; 
+            font-size: 13px; 
             color: #6b7280; 
             font-weight: normal; 
             display: block; 
-            margin-top: 2px; 
+            margin-top: 3px;
+            font-style: italic;
         }
         
         input, select, textarea { 
             width: 100%; 
-            padding: 12px; 
+            padding: 15px; 
             border: 2px solid #d1d5db; 
-            border-radius: 8px; 
+            border-radius: 10px; 
             font-size: 16px;
-            transition: border-color 0.2s;
+            transition: all 0.3s ease;
+            font-family: inherit;
         }
         input:focus, select:focus, textarea:focus { 
             outline: none; 
             border-color: #2563eb; 
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+            transform: translateY(-2px);
         }
         
-        .list-input { display: flex; gap: 10px; margin-bottom: 15px; }
-        .list-input input { flex: 1; }
-        .list-input button { 
-            padding: 12px 16px; 
-            background: #2563eb; 
-            color: white; 
-            border: none; 
-            border-radius: 8px; 
-            cursor: pointer; 
-        }
-        .list-items { margin-top: 10px; }
-        .list-item { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            background: #f3f4f6; 
-            padding: 12px; 
-            border-radius: 6px; 
-            margin-bottom: 8px; 
-        }
-        .remove-btn { 
-            background: #ef4444; 
-            color: white; 
-            border: none; 
-            padding: 6px 10px; 
-            border-radius: 4px; 
-            cursor: pointer; 
-            font-size: 12px; 
+        textarea { 
+            min-height: 120px; 
+            resize: vertical; 
         }
         
-        .navigation { 
-            display: flex; 
-            justify-content: space-between; 
-            margin-top: 40px; 
-            padding-top: 30px; 
-            border-top: 2px solid #e5e7eb; 
-        }
-        
-        .instructions { 
-            background: #dbeafe; 
-            padding: 20px; 
-            border-radius: 8px; 
-            margin-top: 30px; 
-        }
-        .instructions h3 { color: #1e40af; margin-bottom: 10px; }
-        .instructions ol { color: #1e40af; padding-left: 20px; }
-        .instructions li { margin-bottom: 5px; }
-        
-        .sections-nav {
+        .checkbox-group {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
-            margin-bottom: 30px;
+            margin-top: 10px;
         }
-        .section-btn {
-            padding: 15px;
-            background: white;
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
             border: 2px solid #e5e7eb;
             border-radius: 8px;
+            transition: all 0.2s ease;
             cursor: pointer;
-            text-align: center;
-            font-weight: 500;
-            transition: all 0.2s;
         }
-        .section-btn.active {
+        
+        .checkbox-item:hover {
             border-color: #2563eb;
             background: #dbeafe;
-            color: #1e40af;
         }
-        .section-btn:hover {
-            border-color: #9ca3af;
+        
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+            transform: scale(1.2);
         }
+        
+        .submit-section {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .btn-submit {
+            background: white;
+            color: #059669;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .instructions {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #92400e;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+        .instructions h3 { color: #92400e; margin-bottom: 15px; font-size: 18px; }
+        .instructions ol { padding-left: 25px; line-height: 1.8; }
+        
+        .progress {
+            background: #e5e7eb;
+            height: 8px;
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        .progress-bar {
+            background: linear-gradient(90deg, #2563eb, #1d4ed8);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .emoji { font-size: 24px; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div>
-                <h1>Recueil des Besoins en Formation Interculturalité</h1>
-                <p>Australe Formation - Diagnostic personnalisé</p>
-            </div>
-            <div class="buttons">
-                <button class="btn btn-primary" onclick="sauvegarder()">
-                    💾 Sauvegarder
-                </button>
-                <button class="btn btn-success" onclick="exporterDonnees()">
-                    📥 Exporter
-                </button>
-            </div>
+            <h1>🌍 Recueil des Besoins en Formation Interculturalité</h1>
+            <p>Australe Formation - Diagnostic personnalisé et sur-mesure</p>
         </div>
 
-        <div class="form-card">
-            <!-- Navigation entre sections -->
-            <div class="sections-nav">
-                <button class="section-btn active" onclick="changerSection('identification')" id="btn-identification">
-                    📋 Identification
-                </button>
-                <button class="section-btn" onclick="changerSection('contexte')" id="btn-contexte">
-                    👥 Contexte Interculturel
-                </button>
-                <button class="section-btn" onclick="changerSection('besoins')" id="btn-besoins">
-                    🎯 Besoins Spécifiques
-                </button>
-                <button class="section-btn" onclick="changerSection('logistique')" id="btn-logistique">
-                    ⏰ Aspects Logistiques
-                </button>
-            </div>
-
-            <!-- Section Identification -->
-            <div id="section-identification" class="section">
-                <h2 class="section-title">Identification de l'Organisation</h2>
+        <div class="form-container">
+            <form method="post" action="mailto:formacabex@gmail.com?subject=Besoins Formation Interculturalité" enctype="text/plain">
                 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="required">Organisation / Entreprise</label>
-                        <input type="text" id="organisation" required>
+                <!-- Section Identification -->
+                <div class="section">
+                    <h2 class="section-title">
+                        <span class="emoji">📋</span> Identification de l'Organisation
+                    </h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="required">Organisation / Entreprise</label>
+                            <input type="text" name="organisation" required placeholder="Nom de votre organisation">
+                        </div>
+                        <div class="form-group">
+                            <label class="required">Secteur d'activité</label>
+                            <select name="secteur" required>
+                                <option value="">Sélectionner...</option>
+                                <option value="administration">Administration publique</option>
+                                <option value="education">Éducation / Formation</option>
+                                <option value="sante">Santé / Social</option>
+                                <option value="tourisme">Tourisme / Hôtellerie</option>
+                                <option value="commerce">Commerce / Distribution</option>
+                                <option value="industrie">Industrie</option>
+                                <option value="services">Services aux entreprises</option>
+                                <option value="associatif">Secteur associatif</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
                     </div>
+
                     <div class="form-group">
-                        <label class="required">Secteur d'activité</label>
-                        <select id="secteurActivite" required>
+                        <label>Taille de l'organisation</label>
+                        <select name="taille">
                             <option value="">Sélectionner...</option>
-                            <option value="administration">Administration publique</option>
-                            <option value="education">Éducation / Formation</option>
-                            <option value="sante">Santé / Social</option>
-                            <option value="tourisme">Tourisme / Hôtellerie</option>
-                            <option value="commerce">Commerce / Distribution</option>
-                            <option value="industrie">Industrie</option>
-                            <option value="services">Services aux entreprises</option>
-                            <option value="associatif">Secteur associatif</option>
-                            <option value="autre">Autre</option>
+                            <option value="1-10">1 à 10 salariés</option>
+                            <option value="11-50">11 à 50 salariés</option>
+                            <option value="51-200">51 à 200 salariés</option>
+                            <option value="201-500">201 à 500 salariés</option>
+                            <option value="500+">Plus de 500 salariés</option>
                         </select>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label>Taille de l'organisation</label>
-                    <select id="tailleOrganisation">
-                        <option value="">Sélectionner...</option>
-                        <option value="1-10">1 à 10 salariés</option>
-                        <option value="11-50">11 à 50 salariés</option>
-                        <option value="51-200">51 à 200 salariés</option>
-                        <option value="201-500">201 à 500 salariés</option>
-                        <option value="500+">Plus de 500 salariés</option>
-                    </select>
-                </div>
-
-                <h3 style="margin: 30px 0 20px 0; font-size: 20px; color: #374151;">Contact Principal</h3>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="required">Nom et Prénom</label>
-                        <input type="text" id="contactNom" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Poste / Fonction</label>
-                        <input type="text" id="contactPoste">
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="required">Email</label>
-                        <input type="email" id="contactEmail" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Téléphone</label>
-                        <input type="tel" id="contactTelephone">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section Contexte -->
-            <div id="section-contexte" class="section" style="display: none;">
-                <h2 class="section-title">Contexte Interculturel</h2>
-                
-                <div class="form-group">
-                    <label>Contextes interculturels de votre organisation
-                        <span class="label-hint">Ajoutez les situations interculturelles rencontrées</span>
-                    </label>
-                    <div class="list-input">
-                        <input type="text" id="contexte-input" placeholder="Ex: Équipes multiculturelles, clientèle internationale...">
-                        <button onclick="ajouterItem('contexteInterculturel', 'contexte-input')">Ajouter</button>
-                    </div>
-                    <div id="contexteInterculturel-list" class="list-items"></div>
-                </div>
-
-                <div class="form-group">
-                    <label>Défis et difficultés rencontrés
-                        <span class="label-hint">Identifiez les problématiques spécifiques</span>
-                    </label>
-                    <div class="list-input">
-                        <input type="text" id="defis-input" placeholder="Ex: Malentendus culturels, barrières linguistiques...">
-                        <button onclick="ajouterItem('defisRencontres', 'defis-input')">Ajouter</button>
-                    </div>
-                    <div id="defisRencontres-list" class="list-items"></div>
-                </div>
-
-                <div class="form-group">
-                    <label>Populations cibles concernées
-                        <span class="label-hint">Précisez les groupes à former</span>
-                    </label>
-                    <div class="list-input">
-                        <input type="text" id="populations-input" placeholder="Ex: Managers d'équipes, personnel d'accueil, commerciaux...">
-                        <button onclick="ajouterItem('populationsCibles', 'populations-input')">Ajouter</button>
-                    </div>
-                    <div id="populationsCibles-list" class="list-items"></div>
-                </div>
-            </div>
-
-            <!-- Section Besoins -->
-            <div id="section-besoins" class="section" style="display: none;">
-                <h2 class="section-title">Besoins Spécifiques de Formation</h2>
-                
-                <div class="form-group">
-                    <label>Objectifs principaux de la formation
-                        <span class="label-hint">Que souhaitez-vous atteindre ?</span>
-                    </label>
-                    <div class="list-input">
-                        <input type="text" id="objectifs-input" placeholder="Ex: Améliorer la communication interculturelle, réduire les conflits...">
-                        <button onclick="ajouterItem('objectifsPrincipaux', 'objectifs-input')">Ajouter</button>
-                    </div>
-                    <div id="objectifsPrincipaux-list" class="list-items"></div>
-                </div>
-
-                <div class="form-group">
-                    <label>Compétences à acquérir
-                        <span class="label-hint">Compétences prioritaires pour vos équipes</span>
-                    </label>
-                    <div class="list-input">
-                        <input type="text" id="competences-input" placeholder="Ex: Intelligence culturelle, gestion des biais, adaptation comportementale...">
-                        <button onclick="ajouterItem('competencesAcquerir', 'competences-input')">Ajouter</button>
-                    </div>
-                    <div id="competencesAcquerir-list" class="list-items"></div>
-                </div>
-
-                <div class="form-group">
-                    <label>Thématiques de prédilection
-                        <span class="label-hint">Sujets prioritaires à aborder en formation</span>
-                    </label>
-                    <div class="list-input">
-                        <input type="text" id="thematiques-input" placeholder="Ex: Communication non-verbale, codes culturels, négociation interculturelle...">
-                        <button onclick="ajouterItem('thematiquesPreference', 'thematiques-input')">Ajouter</button>
-                    </div>
-                    <div id="thematiquesPreference-list" class="list-items"></div>
-                </div>
-
-                <div class="form-group">
-                    <label>Durée souhaitée de formation</label>
-                    <select id="dureeFormation">
-                        <option value="">Sélectionner...</option>
-                        <option value="demi-journee">Demi-journée (3-4h)</option>
-                        <option value="1jour">1 jour (7h)</option>
-                        <option value="2jours">2 jours (14h)</option>
-                        <option value="3-5jours">3 à 5 jours (21-35h)</option>
-                        <option value="plus5jours">Plus de 5 jours</option>
-                        <option value="modulaire">Formation modulaire (plusieurs sessions)</option>
-                        <option value="parcours">Parcours long (plusieurs mois)</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Modalités pédagogiques préférées
-                        <span class="label-hint">Comment souhaitez-vous organiser la formation ?</span>
-                    </label>
-                    <div class="list-input">
-                        <input type="text" id="modalites-input" placeholder="Ex: Présentiel, distanciel, blended learning, ateliers pratiques...">
-                        <button onclick="ajouterItem('modalitesPreferes', 'modalites-input')">Ajouter</button>
-                    </div>
-                    <div id="modalitesPreferes-list" class="list-items"></div>
-                </div>
-
-                <div class="form-group">
-                    <label>Contraintes particulières
-                        <span class="label-hint">Éléments à prendre en compte</span>
-                    </label>
-                    <div class="list-input">
-                        <input type="text" id="contraintes-input" placeholder="Ex: Disponibilité limitée, sensibilités culturelles spécifiques...">
-                        <button onclick="ajouterItem('contraintes', 'contraintes-input')">Ajouter</button>
-                    </div>
-                    <div id="contraintes-list" class="list-items"></div>
-                </div>
-            </div>
-
-            <!-- Section Logistique -->
-            <div id="section-logistique" class="section" style="display: none;">
-                <h2 class="section-title">Aspects Logistiques</h2>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Nombre de participants estimé</label>
-                        <select id="nombreParticipants">
-                            <option value="">Sélectionner...</option>
-                            <option value="1-5">1 à 5 participants</option>
-                            <option value="6-10">6 à 10 participants</option>
-                            <option value="11-20">11 à 20 participants</option>
-                            <option value="21-50">21 à 50 participants</option>
-                            <option value="50+">Plus de 50 participants</option>
-                        </select>
+                    <h3 style="margin: 30px 0 20px 0; font-size: 20px; color: #374151;">👤 Contact Principal</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="required">Nom et Prénom</label>
+                            <input type="text" name="contact_nom" required placeholder="Votre nom complet">
+                        </div>
+                        <div class="form-group">
+                            <label>Poste / Fonction</label>
+                            <input type="text" name="poste" placeholder="Votre fonction dans l'entreprise">
+                        </div>
                     </div>
                     
-                    <div class="form-group">
-                        <label>Budget estimé</label>
-                        <select id="budgetEstime">
-                            <option value="">Sélectionner...</option>
-                            <option value="0-5000">Moins de 5 000 €</option>
-                            <option value="5000-10000">5 000 à 10 000 €</option>
-                            <option value="10000-25000">10 000 à 25 000 €</option>
-                            <option value="25000-50000">25 000 à 50 000 €</option>
-                            <option value="50000+">Plus de 50 000 €</option>
-                            <option value="non-defini">Non défini</option>
-                        </select>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="required">Email</label>
+                            <input type="email" name="email" required placeholder="votre.email@entreprise.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Téléphone</label>
+                            <input type="tel" name="telephone" placeholder="0262 XX XX XX">
+                        </div>
                     </div>
                 </div>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Calendrier souhaité</label>
-                        <select id="calendrierSouhaite">
-                            <option value="">Sélectionner...</option>
-                            <option value="immediat">Immédiat (dans le mois)</option>
-                            <option value="3mois">Dans les 3 mois</option>
-                            <option value="6mois">Dans les 6 mois</option>
-                            <option value="annee">Dans l'année</option>
-                            <option value="flexible">Flexible</option>
-                        </select>
-                    </div>
+                <!-- Section Contexte -->
+                <div class="section">
+                    <h2 class="section-title">
+                        <span class="emoji">🌐</span> Contexte Interculturel
+                    </h2>
                     
                     <div class="form-group">
-                        <label>Lieu de préférence</label>
-                        <input type="text" id="lieuPreference" placeholder="Ex: Dans vos locaux, chez Australe Formation, en ligne...">
+                        <label>Contextes interculturels de votre organisation
+                            <span class="label-hint">Décrivez les situations interculturelles rencontrées</span>
+                        </label>
+                        <textarea name="contexte_interculturel" placeholder="Ex: Équipes multiculturelles, clientèle internationale, partenaires étrangers, expatriés, diversité culturelle des collaborateurs..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Défis et difficultés rencontrés
+                            <span class="label-hint">Identifiez les problématiques spécifiques</span>
+                        </label>
+                        <textarea name="defis_rencontres" placeholder="Ex: Malentendus culturels, barrières linguistiques, conflits liés aux différences culturelles, difficultés de communication..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Populations cibles concernées
+                            <span class="label-hint">Précisez les groupes à former</span>
+                        </label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="cibles" value="managers" id="managers">
+                                <label for="managers">Managers d'équipes</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="cibles" value="commerciaux" id="commerciaux">
+                                <label for="commerciaux">Équipe commerciale</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="cibles" value="accueil" id="accueil">
+                                <label for="accueil">Personnel d'accueil</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="cibles" value="rh" id="rh">
+                                <label for="rh">Équipe RH</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="cibles" value="direction" id="direction">
+                                <label for="direction">Direction</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="cibles" value="tous" id="tous">
+                                <label for="tous">Tous les collaborateurs</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Instructions Google Drive -->
-            <div class="instructions">
-                <h3>📁 Instructions pour Google Drive :</h3>
-                <ol>
-                    <li>Remplissez le formulaire section par section</li>
-                    <li>Cliquez sur 'Exporter' pour télécharger le fichier JSON</li>
-                    <li>Uploadez le fichier dans votre dossier Google Drive 'Besoins Formation Interculturalité'</li>
-                    <li>Organisez par date/secteur pour faciliter l'analyse ultérieure</li>
-                    <li>Utilisez Google Sheets pour créer des tableaux de synthèse</li>
-                </ol>
-            </div>
+                <!-- Section Besoins -->
+                <div class="section">
+                    <h2 class="section-title">
+                        <span class="emoji">🎯</span> Besoins Spécifiques de Formation
+                    </h2>
+                    
+                    <div class="form-group">
+                        <label>Objectifs principaux de la formation
+                            <span class="label-hint">Que souhaitez-vous atteindre concrètement ?</span>
+                        </label>
+                        <textarea name="objectifs" placeholder="Ex: Améliorer la communication interculturelle, réduire les conflits, développer l'intelligence culturelle, faciliter l'intégration..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Compétences prioritaires à développer
+                            <span class="label-hint">Compétences clés pour vos équipes</span>
+                        </label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="competences" value="intelligence-culturelle" id="intel">
+                                <label for="intel">Intelligence culturelle</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="competences" value="communication" id="comm">
+                                <label for="comm">Communication interculturelle</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="competences" value="negociation" id="nego">
+                                <label for="nego">Négociation interculturelle</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="competences" value="management" id="manage">
+                                <label for="manage">Management interculturel</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="competences" value="adaptation" id="adapt">
+                                <label for="adapt">Adaptation comportementale</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="competences" value="biais" id="biais">
+                                <label for="biais">Gestion des biais culturels</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Thématiques de prédilection
+                            <span class="label-hint">Sujets prioritaires à aborder</span>
+                        </label>
+                        <textarea name="thematiques" placeholder="Ex: Communication non-verbale, codes culturels, protocoles internationaux, gestion du temps interculturel, résolution de conflits..."></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Durée souhaitée de formation</label>
+                            <select name="duree">
+                                <option value="">Sélectionner...</option>
+                                <option value="demi-journee">Demi-journée (3-4h)</option>
+                                <option value="1jour">1 jour (7h)</option>
+                                <option value="2jours">2 jours (14h)</option>
+                                <option value="3-5jours">3 à 5 jours (21-35h)</option>
+                                <option value="plus5jours">Plus de 5 jours</option>
+                                <option value="modulaire">Formation modulaire</option>
+                                <option value="parcours">Parcours long (plusieurs mois)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Modalités pédagogiques préférées</label>
+                            <select name="modalites">
+                                <option value="">Sélectionner...</option>
+                                <option value="presentiel">100% Présentiel</option>
+                                <option value="distanciel">100% Distanciel</option>
+                                <option value="blended">Blended learning (mixte)</option>
+                                <option value="ateliers">Ateliers pratiques</option>
+                                <option value="coaching">Coaching individuel</option>
+                                <option value="immersion">Mise en situation / Immersion</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Contraintes particulières
+                            <span class="label-hint">Éléments importants à prendre en compte</span>
+                        </label>
+                        <textarea name="contraintes" placeholder="Ex: Disponibilité limitée, sensibilités culturelles spécifiques, contraintes budgétaires, urgence du besoin..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Section Logistique -->
+                <div class="section">
+                    <h2 class="section-title">
+                        <span class="emoji">⏰</span> Aspects Logistiques
+                    </h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nombre de participants estimé</label>
+                            <select name="participants">
+                                <option value="">Sélectionner...</option>
+                                <option value="1-5">1 à 5 participants</option>
+                                <option value="6-10">6 à 10 participants</option>
+                                <option value="11-20">11 à 20 participants</option>
+                                <option value="21-50">21 à 50 participants</option>
+                                <option value="50+">Plus de 50 participants</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Budget estimé</label>
+                            <select name="budget">
+                                <option value="">Sélectionner...</option>
+                                <option value="0-5000">Moins de 5 000 €</option>
+                                <option value="5000-10000">5 000 à 10 000 €</option>
+                                <option value="10000-25000">10 000 à 25 000 €</option>
+                                <option value="25000-50000">25 000 à 50 000 €</option>
+                                <option value="50000+">Plus de 50 000 €</option>
+                                <option value="non-defini">Non défini</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Calendrier souhaité</label>
+                            <select name="calendrier">
+                                <option value="">Sélectionner...</option>
+                                <option value="immediat">Immédiat (dans le mois)</option>
+                                <option value="3mois">Dans les 3 mois</option>
+                                <option value="6mois">Dans les 6 mois</option>
+                                <option value="annee">Dans l'année</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Lieu de préférence</label>
+                            <input type="text" name="lieu" placeholder="Ex: Dans vos locaux, chez Australe Formation, en ligne...">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Commentaires supplémentaires -->
+                <div class="section">
+                    <h2 class="section-title">
+                        <span class="emoji">💬</span> Informations Complémentaires
+                    </h2>
+                    
+                    <div class="form-group">
+                        <label>Commentaires ou demandes spécifiques
+                            <span class="label-hint">Tout élément important que nous devrions connaître</span>
+                        </label>
+                        <textarea name="commentaires" placeholder="Précisions sur vos attentes, contexte particulier, expériences passées en formation interculturelle..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Boutons d'action -->
+                <div class="submit-section">
+                    <h3 style="margin-bottom: 20px;">✅ Finaliser votre demande</h3>
+                    <p style="margin-bottom: 25px;">Vos informations nous permettront de vous proposer une formation sur-mesure adaptée à vos besoins spécifiques.</p>
+                    
+                    <button type="submit" class="btn-submit">📤 Envoyer ma demande</button>
+                    <button type="reset" class="btn-submit" style="background: #ef4444; color: white;">🔄 Recommencer</button>
+                </div>
+
+                <!-- Instructions -->
+                <div class="instructions">
+                    <h3>📋 Après envoi de votre formulaire :</h3>
+                    <ol>
+                        <li><strong>Accusé de réception</strong> sous 24h de notre équipe</li>
+                        <li><strong>Analyse personnalisée</strong> de vos besoins par nos experts</li>
+                        <li><strong>Proposition sur-mesure</strong> avec programme détaillé et devis</li>
+                        <li><strong>Entretien de cadrage</strong> pour finaliser votre projet</li>
+                        <li><strong>Démarrage</strong> de votre formation interculturelle</li>
+                    </ol>
+                    
+                    <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #92400e;">
+                        <strong>📞 Contact direct :</strong> formacabex@gmail.com<br>
+                        <strong>🏢 Australe Formation</strong> - Spécialiste en formation interculturelle à La Réunion
+                    </div>
+                </div>
+
+            </form>
         </div>
     </div>
-
-    <script>
-        // Données du formulaire
-        let formData = {
-            contexteInterculturel: [],
-            defisRencontres: [],
-            populationsCibles: [],
-            objectifsPrincipaux: [],
-            competencesAcquerir: [],
-            thematiquesPreference: [],
-            modalitesPreferes: [],
-            contraintes: []
-        };
-
-        // Navigation entre sections
-        function changerSection(sectionId) {
-            // Masquer toutes les sections
-            document.querySelectorAll('.section').forEach(section => {
-                section.style.display = 'none';
-            });
-            
-            // Afficher la section sélectionnée
-            document.getElementById('section-' + sectionId).style.display = 'block';
-            
-            // Mettre à jour les boutons
-            document.querySelectorAll('.section-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            document.getElementById('btn-' + sectionId).classList.add('active');
-        }
-
-        // Ajouter un élément à une liste
-        function ajouterItem(listeName, inputId) {
-            const input = document.getElementById(inputId);
-            const value = input.value.trim();
-            
-            if (value) {
-                formData[listeName].push(value);
-                input.value = '';
-                afficherListe(listeName);
-            }
-        }
-
-        // Supprimer un élément d'une liste
-        function supprimerItem(listeName, index) {
-            formData[listeName].splice(index, 1);
-            afficherListe(listeName);
-        }
-
-        // Afficher une liste
-        function afficherListe(listeName) {
-            const container = document.getElementById(listeName + '-list');
-            container.innerHTML = '';
-            
-            formData[listeName].forEach((item, index) => {
-                const div = document.createElement('div');
-                div.className = 'list-item';
-                div.innerHTML = `
-                    <span>${item}</span>
-                    <button class="remove-btn" onclick="supprimerItem('${listeName}', ${index})">Supprimer</button>
-                `;
-                container.appendChild(div);
-            });
-        }
-
-        // Collecter toutes les données du formulaire
-        function collecterDonnees() {
-            const donnees = { ...formData };
-            
-            // Champs simples
-            const champs = [
-                'organisation', 'secteurActivite', 'tailleOrganisation',
-                'contactNom', 'contactPoste', 'contactEmail', 'contactTelephone',
-                'dureeFormation', 'nombreParticipants', 'budgetEstime', 
-                'calendrierSouhaite', 'lieuPreference'
-            ];
-            
-            champs.forEach(champ => {
-                const element = document.getElementById(champ);
-                if (element) {
-                    donnees[champ] = element.value;
-                }
-            });
-            
-            return donnees;
-        }
-
-        // Sauvegarder les données
-        function sauvegarder() {
-            const donnees = collecterDonnees();
-            const dataStr = JSON.stringify(donnees, null, 2);
-            
-            // Sauvegarder dans localStorage
-            const key = 'besoins-formation-' + Date.now();
-            localStorage.setItem(key, dataStr);
-            
-            alert('✅ Données sauvegardées localement ! N\'oubliez pas d\'exporter pour ajouter à votre Google Drive.');
-        }
-
-        // Exporter les données
-        function exporterDonnees() {
-            const donnees = collecterDonnees();
-            donnees.dateExport = new Date().toISOString().split('T')[0];
-            donnees.organismeFormateur = 'Australe Formation';
-            
-            const dataStr = JSON.stringify(donnees, null, 2);
-            const dataBlob = new Blob([dataStr], { type: 'application/json' });
-            const url = URL.createObjectURL(dataBlob);
-            
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = `besoins-formation-interculturalite-${donnees.organisation || 'export'}-${donnees.dateExport}.json`;
-            link.click();
-            
-            URL.revokeObjectURL(url);
-        }
-
-        // Gestion des touches Entrée pour les listes
-        document.addEventListener('DOMContentLoaded', function() {
-            const inputs = document.querySelectorAll('.list-input input');
-            inputs.forEach(input => {
-                input.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        e.preventDefault();
-                        const button = this.nextElementSibling;
-                        button.click();
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>
